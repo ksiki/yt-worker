@@ -5,7 +5,6 @@ def init(program_name, commands: dict[str, dict[str, dict]]) -> ArgumentParser:
     parser: ArgumentParser = ArgumentParser(prog=program_name)
     subparser: _SubParsersAction = parser.add_subparsers(dest="command", required=True)
     build_parsers(subparser, commands)
-
     return parser
 
 
@@ -27,5 +26,4 @@ def build_kwargs(cfg: dict) -> dict:
     kwargs = {}
     for a in cfg:
         kwargs[a] = cfg[a]
-
     return kwargs
