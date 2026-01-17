@@ -1,4 +1,5 @@
 from argparse import _SubParsersAction, ArgumentParser, Namespace
+from typing import Any
 
 
 def init(program_name, commands: dict[str, dict[str, dict]]) -> ArgumentParser:
@@ -8,7 +9,7 @@ def init(program_name, commands: dict[str, dict[str, dict]]) -> ArgumentParser:
     return parser
 
 
-def args(parser: ArgumentParser) -> Namespace:
+def extract_args(parser: ArgumentParser) -> Namespace:
     args: Namespace = parser.parse_args()
     print(f"Working with: {args}")
     return args
@@ -22,7 +23,7 @@ def build_parsers(subparser: _SubParsersAction, commands: dict[str, dict[str, di
             command.add_argument(a, **kwargs)
 
 
-def build_kwargs(cfg: dict) -> dict:
+def build_kwargs(cfg: dict) -> dict[str, Any]:
     kwargs = {}
     for a in cfg:
         kwargs[a] = cfg[a]
