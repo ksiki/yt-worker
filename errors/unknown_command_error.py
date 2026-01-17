@@ -1,0 +1,2 @@
+class UnknownCommand(LookupError):
+    pass

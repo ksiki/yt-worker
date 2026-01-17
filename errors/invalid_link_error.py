@@ -1,0 +1,2 @@
+class InvalidLinkError(RuntimeError):
+    pass
