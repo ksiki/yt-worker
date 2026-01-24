@@ -19,12 +19,12 @@ def build_parsers(subparser: _SubParsersAction, commands: dict[str, dict[str, di
     for c, cfg in commands.items():
         command = subparser.add_parser(c)
         for a, acfg in cfg.items():
-            kwargs = build_kwargs(acfg)
+            kwargs: dict[str, Any] = build_kwargs(acfg)
             command.add_argument(a, **kwargs)
 
 
 def build_kwargs(cfg: dict) -> dict[str, Any]:
-    kwargs = {}
+    kwargs: dict = {}
     for a in cfg:
         kwargs[a] = cfg[a]
     return kwargs
